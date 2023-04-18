@@ -1,0 +1,16 @@
+aiohttp
+aiosignal
+async-timeout
+attrs
+certifi
+charset-normalizer
+frozenlist
+idna
+multidict
+py-cord
+requests
+typing_extensions
+urllib3
+wget
+yarl
+pillow

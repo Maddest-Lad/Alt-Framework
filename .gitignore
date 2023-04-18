@@ -1,0 +1,8 @@
+# Environment
+venv/
+Logs/
+Media/
+__pycache__/
+
+# Bot Token
+token.secret
