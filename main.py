@@ -68,18 +68,22 @@ async def set_status(ctx, status: Option(str, "the status to be set", required=T
 # Example 5 - Just What the Fuck is ctx (context)
 # See https://docs.pycord.dev/en/stable/_modules/discord/commands/context.html
 @bot.slash_command(guilds=scope)
-async def log_data(ctx):
+async def log_data(ctx, all_fields: Option(bool, "All Fields", required=False, default=False)):
+    data = {}
     
     data = {
-        'guild'        : str(ctx.guild),
-        'guild locale' : str(ctx.guild_locale),
-        'channel'      : str(ctx.channel),
-        'user'         : str(ctx.user),
-        'perms'        : str(ctx.app_permissions)    
+        'guild'        : ctx.guild,
+        'channel'      : ctx.channel,
+        'user'         : ctx.user,
+        'perms'        : ctx.app_permissions    
     }
     
-    await ctx.respond(f"Data Dump:\n {json.dumps(data)}")
-    
+    if all_fields:
+        data.update(vars(ctx))  
+        
+    # User Friendly
+    formatted = '\n'.join([key + " : " + str(value) for key, value in data.items()])
+    await ctx.respond(f"Data Dump:```{formatted}```")
     log(data)
 
 if __name__ == '__main__':
