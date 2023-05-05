@@ -11,7 +11,7 @@ from Modules.utils import *
 bot = discord.Bot()
 
 # Server Scope (Ensures Bot Commands Are Updated Quickly)
-scope = [446862283600166927] # This Can be Gathered by Right Clicking on a Server and Hitting "Copy Server ID"
+scope = [] # This Can be Gathered by Right Clicking on a Server and Hitting "Copy Server ID"
 
 # Startup
 @bot.event
